@@ -8,6 +8,7 @@
       <i-form-item label="邮箱" prop="mail">
         <i-input v-model="formValidate.mail"></i-input>
       </i-form-item>
+      <i-checkbox v-model="single">{{single}}</i-checkbox>
     </i-form>
     <button @click="handleSubmit">提交</button>
     <button @click="handleReset">重置</button>
@@ -18,11 +19,13 @@
 import iForm from '../components/form/Form'
 import iFormItem from '../components/form/FormItem'
 import iInput from '../components/input/Input'
+import iCheckbox from '../components/checkbox/Checkbox'
 export default {
   components: {
     iForm,
     iFormItem,
-    iInput
+    iInput,
+    iCheckbox
   },
   data () {
     return {
@@ -38,7 +41,8 @@ export default {
           { required: true, message: '邮箱不能为空', trigger: 'blur' },
           { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
         ]
-      }
+      },
+      single: false
     }
   },
   methods: {
